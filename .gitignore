@@ -3,3 +3,4 @@ Assets/Plugins/*
 Assets/TangoPrefabs/*
 Assets/TangoSDK/*
 Library/*
+*.bin
