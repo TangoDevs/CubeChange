@@ -8,6 +8,7 @@ public class ChangeColour : MonoBehaviour {
 
     private string name;
     Renderer myRenderer;
+    GameObject g1;
 
 	// Use this for initialization
 	void Start () {
@@ -22,10 +23,10 @@ public class ChangeColour : MonoBehaviour {
 
     void OnMouseDown()
     {
-        GameObject g1=GameObject.Find("plane");
+       
         //get plane that was clicked 
-        Camera myCamera = GameObject.FindWithTag("myCamera").GetComponent<Camera>();
-        Ray ray = myCamera.ScreenPointToRay(Input.mousePosition);
+        
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
         if (Physics.Raycast(ray, out hit, 100))
@@ -33,29 +34,30 @@ public class ChangeColour : MonoBehaviour {
            g1= hit.transform.gameObject;
         }
         //raycast
-        //g1 = hit.transform.gameObject;
+        g1 = hit.transform.gameObject;
         //get colour from cube 
         int selectedIndex=cg.GetColour();
+        myRenderer = g1.gameObject.GetComponent<Renderer>();
 
         //change colour of plane 
         if (selectedIndex == 0)
         {
             //change colour plane to red
-            Debug.Log("red");
-            myRenderer = g1.gameObject.GetComponent<Renderer>();
+            //Debug.Log("red");
+            
             myRenderer.material.color = new Color(1, 0, 0, 1);
 
         }
         else if (selectedIndex == 1)
         {
             //change colour plane to red
-            Debug.Log("blue");
+            //Debug.Log("blue");
             myRenderer.material.color = new Color(0, 0, 1, 1);
         }
         else if (selectedIndex == 2)
         {
             //change colour plane to red
-            Debug.Log("green");
+            //Debug.Log("green");
             myRenderer.material.color = new Color(0, 1, 0, 1);
         }
     }

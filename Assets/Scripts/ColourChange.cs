@@ -19,7 +19,6 @@ public class ColourChange : MonoBehaviour {
         //get drop down list selected index
        selectedindex= myDropdown.value;
 
-       g1.transform.Rotate(Vector3.up, 200 * Time.deltaTime);
       
 	}
 
